@@ -5,7 +5,8 @@ const userController = require('../userController/controller');
 
 router.post('/submit',userController.AddBook);
 router.get('/submit',userController.GetBook);
-router.put('/submit/:id',userController.GetSingleBoook);
-
+router.get('/submit/:id',userController.GetSingleBoook);
+router.put('/update/:id',userController.UpdateBook);
+router.delete('/delete/:id',userController.DeleteBook);
 
 module.exports = router

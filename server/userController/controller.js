@@ -73,3 +73,59 @@ exports.GetSingleBoook = async function (req,res){
         res.status(response.statuscode).send(response);
     }
 }
+
+exports.UpdateBook = async function (req,res){
+    try {
+
+        let body = req.body;
+        console.log("body : ",body);
+
+        let id = req.params.id;
+        console.log("id : ",id);
+
+        let updatedata = await users.updateOne({ _id: id }, { $set: body});
+        console.log("editdata", updatedata);
+
+        let response = {
+            success : true,
+            statuscode : 200,
+            message : updatedata,
+        }
+        res.status(response.statuscode).send(response);
+        return;
+    } catch (error) {
+        let response = {
+            success : false,
+            statuscode : 400,
+            message : "Book not Updated",
+        }
+        res.status(response.statuscode).send(response);
+    }
+}
+
+exports.DeleteBook = async function (req,res){
+    try {
+        
+        let id = req.params.id;
+        console.log("id : ",id);
+
+        let deletedata = await users.deleteOne({ _id: id });
+        console.log("editdata", deletedata);
+
+        let response = {
+            success : true,
+            statuscode : 200,
+            message : deletedata,
+        }
+        res.status(response.statuscode).send(response);
+        return;
+
+    } catch (error) {
+        let response = {
+            success : false,
+            statuscode : 400,
+            message : "Book not Deleted",
+        }
+        res.status(response.statuscode).send(response);
+    }
+}

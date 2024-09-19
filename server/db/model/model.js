@@ -3,31 +3,31 @@ const mongoose = require('mongoose')
 let Books = new mongoose.Schema({
     name: {
         type :String,
-        require : true,
+        required : true,
     },
     publisher: {
         type :String,
-        require : true,
+        required : true,
     },
-    Author: {
+    author: {
         type :String,
-        require : true,
+        required : true,
     },
     description: {
         type :String,
-        require : true,
+        required : true,
     },
     price: {
-        type :Number,
-        require : true,
+        type :String,
+        required : true,
     },
     release_date: {
-        type :Number,
-        require : true,
+        type :Date,
+        required : true,
     },
     image: {
         type : String,
-        require : true,
+        required : true,
     },
     
 })
