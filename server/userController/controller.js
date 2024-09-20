@@ -9,14 +9,14 @@ exports.AddBook = async function (req,res){
 
         
 
-         let salt = bcrypt.genSaltSync(10);
-         console.log("salt : ",salt);
+        //  let salt = bcrypt.genSaltSync(10);
+        //  console.log("salt : ",salt);
 
-         let hashedpublisher= bcrypt.hashSync(body.publisher,salt)
-         console.log("hashedpublisher : ",hashedpublisher);
+        //  let hashedpublisher= bcrypt.hashSync(body.publisher,salt)
+        //  console.log("hashedpublisher : ",hashedpublisher);
 
-         body.publisher = hashedpublisher;
-         console.log("body.publisher : ",body.publisher)
+        //  body.publisher = hashedpublisher;
+        //  console.log("body.publisher : ",body.publisher)
 
          let Add_Book = await users.create(body);
          console.log("Add_Book : ",Add_Book)
@@ -70,14 +70,14 @@ exports.GetSingleBoook = async function (req,res){
         let user_data = await users.findOne({ _id : id});
             console.log("user_data7 : ",user_data);
 
-            let str_user_data = JSON.stringify(user_data);
-            console.log("str_user_data : ",str_user_data);
+            // let str_user_data = JSON.stringify(user_data);
+            // console.log("str_user_data : ",str_user_data);
 
             let response = {
                 success : true,
                 statuscode : 200,
                 message : "single data successfull",
-                data : str_user_data,
+                data :user_data,
             }
             res.status(response.statuscode).send(response);
     } catch (error) {
@@ -109,6 +109,7 @@ exports.UpdateBook = async function (req,res){
         }
         res.status(response.statuscode).send(response);
         return;
+        
     } catch (error) {
         let response = {
             success : false,

@@ -18,14 +18,18 @@ let Books = new mongoose.Schema({
         // required : true,
     },
     price: {
-        type :Number,
+        type :String,
         // required : true,
     },
-    releasedate: {
-        type :Date,
+    offer: {
+        type :String,
         // required : true,
     },
     image: {
+        type : String,
+        // required : true,
+    },
+    category: {
         type : String,
         // required : true,
     },
