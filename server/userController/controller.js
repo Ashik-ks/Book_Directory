@@ -1,10 +1,22 @@
 let users =  require('../db/model/model');
 const {success_function,error_function} = require('../utils/responsehandler');
+const bcrypt = require("bcrypt")
 
 exports.AddBook = async function (req,res){
     try {
          let body = req.body;
          console.log("body : ",body);
+
+        
+
+         let salt = bcrypt.genSaltSync(10);
+         console.log("salt : ",salt);
+
+         let hashedpublisher= bcrypt.hashSync(body.publisher,salt)
+         console.log("hashedpublisher : ",hashedpublisher);
+
+         body.publisher = hashedpublisher;
+         console.log("body.publisher : ",body.publisher)
 
          let Add_Book = await users.create(body);
          console.log("Add_Book : ",Add_Book)
@@ -15,8 +27,10 @@ exports.AddBook = async function (req,res){
             message : "Book added succesfully",
         }
         res.status(response.statuscode).send(response);
+        return;
 
     } catch (error) {
+        console.log("error : ",error)
         let response = {
             success : false,
             statuscode : 400,
@@ -33,7 +47,8 @@ exports.GetBook = async function (req,res){
          let response = {
             success : true,
             statuscode : 200,
-            message : userData,
+            message : "Books Get Successfully",
+            data : userData,
         }
         res.status(response.statuscode).send(response);
 
@@ -61,7 +76,8 @@ exports.GetSingleBoook = async function (req,res){
             let response = {
                 success : true,
                 statuscode : 200,
-                message : str_user_data,
+                message : "single data successfull",
+                data : str_user_data,
             }
             res.status(response.statuscode).send(response);
     } catch (error) {
