@@ -32,7 +32,7 @@ async function UserView(){
 }
 
 function handleClickUser(id) {
-    window.location.href = `Usersingleview.html?id=${id}`
+    window.location.href = `UserSingleView.html?id=${id}`
 }
 
 async function UserSingleData() {
@@ -50,7 +50,9 @@ async function UserSingleData() {
     console.log("id ", id, typeof (id));
 
     try {
-        let User_single_response = await fetch(`/submit/${id}`);
+        let User_single_response =  await fetch(`/submit/${id}`,{
+            method : "get",
+        });
         console.log("User_single_response : ", User_single_response)
 
         let User_parsed_single_response = await User_single_response.json();
@@ -165,6 +167,7 @@ async function GetData() {
                 <div class="col fs-5 fw-bold text-center">${parsed_display[i].author}</div>
                 <div class="col fs-5 fw-bold text-center">${parsed_display[i].publisher}</div>
                 <div class="col text-center"><img src="./images/icons8-delete-30.png" alt="deleteimg" id= "deleteimg" onclick="handleClickDelete('${id}')"></div>
+                <div class="mt-3 "><button class = "ps-2 pe-2 fs-5 twobtn" onclick="handleClickEdit('${id}')">Edit</button></div>
             </div>
                     
                   </div>
@@ -173,55 +176,6 @@ async function GetData() {
         }
     } catch (error) {
 
-    }
-}
-
-function handleClick(id) {
-    window.location.href = `singleview.html?id=${id}`
-}
-
-async function GetSingleData() {
-    let location = window.location;
-    console.log("location", location);
-
-    let querystring = location.search;
-    console.log("querystring", querystring);
-
-
-    let urlParams = new URLSearchParams(querystring);
-    console.log("url", urlParams);
-
-    let id = urlParams.get("id");
-    console.log("id ", id, typeof (id));
-
-    try {
-        let single_response = await fetch(`/submit/${id}`);
-        console.log("single_response : ", single_response)
-
-        let parsed_single_response = await single_response.json();
-        console.log("parsed_single_response : ", parsed_single_response);
-
-        let parsed_single_data = parsed_single_response.data;
-        console.log("parsed_single_data : ", parsed_single_data)
-
-        let rows = `
-        <div class="container  lh-lg  pb-3 pt-3 shadow p-3 mb-5 bg-body rounded mt-3 mt-5">
-          <div id = "imageid1" class="text-center" ><img  src ="${parsed_single_data.image} "class = "single_datacontainerimg"></div>
-                      <div  class = "mt-3 fw-bold fs-1">Name : ${parsed_single_data.name}</div>
-                      <div  class="fst-normal fs-3">Publisher : ${parsed_single_data.publisher}</div>
-                     <div class="fst-normal fs-3">Price : ${parsed_single_data.price}</div>
-                     <div  class="fst-normal fs-3">Category : ${parsed_single_data.category}</div>
-                     <div  class="fst-normal fs-3">Author : ${parsed_single_data.author}</div>
-                     <div  class="fst-normal fs-3">Description : ${parsed_single_data.description}</div>
-                     <div  class="fst-normal fs-3">Offer : ${parsed_single_data.offer}</div>
-                     <div class="mt-3 "><button class = "ps-2 pe-2 fs-5 twobtn" onclick="handleClickEdit('${id}')">Edit</button></div>
-                     </div>
-           </div>
-        `
-        document.getElementById('single_datacontainer').innerHTML = rows;
-
-    } catch (error) {
-        console.log("error : ", error);
     }
 }
 
@@ -349,3 +303,56 @@ async function handleClickDelete(id) {
         console.log("error : ", error);
     }
 }
+
+
+
+
+
+// function handleClick(id) {
+//     window.location.href = `singleview.html?id=${id}`
+// }
+
+// async function GetSingleData() {
+//     let location = window.location;
+//     console.log("location", location);
+
+//     let querystring = location.search;
+//     console.log("querystring", querystring);
+
+
+//     let urlParams = new URLSearchParams(querystring);
+//     console.log("url", urlParams);
+
+//     let id = urlParams.get("id");
+//     console.log("id ", id, typeof (id));
+
+//     try {
+//         let single_response = await fetch(`/submit/${id}`);
+//         console.log("single_response : ", single_response)
+
+//         let parsed_single_response = await single_response.json();
+//         console.log("parsed_single_response : ", parsed_single_response);
+
+//         let parsed_single_data = parsed_single_response.data;
+//         console.log("parsed_single_data : ", parsed_single_data)
+
+//         let rows = `
+//         <div class="container  lh-lg  pb-3 pt-3 shadow p-3 mb-5 bg-body rounded mt-3 mt-5">
+//           <div id = "imageid1" class="text-center" ><img  src ="${parsed_single_data.image} "class = "single_datacontainerimg"></div>
+//                       <div  class = "mt-3 fw-bold fs-1">Name : ${parsed_single_data.name}</div>
+//                       <div  class="fst-normal fs-3">Publisher : ${parsed_single_data.publisher}</div>
+//                      <div class="fst-normal fs-3">Price : ${parsed_single_data.price}</div>
+//                      <div  class="fst-normal fs-3">Category : ${parsed_single_data.category}</div>
+//                      <div  class="fst-normal fs-3">Author : ${parsed_single_data.author}</div>
+//                      <div  class="fst-normal fs-3">Description : ${parsed_single_data.description}</div>
+//                      <div  class="fst-normal fs-3">Offer : ${parsed_single_data.offer}</div>
+                     
+//                      </div>
+//            </div>
+//         `
+//         document.getElementById('single_datacontainer').innerHTML = rows;
+
+//     } catch (error) {
+//         console.log("error : ", error);
+//     }
+// }

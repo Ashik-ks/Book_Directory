@@ -14,7 +14,10 @@
 }
 .AddBookbody{
     background-image: url('./images/istockphoto-470721440-2048x2048.jpg');
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 #formdiv {
     max-width: 600px;
