@@ -11,21 +11,39 @@ async function UserView(){
         console.log("Parsed_User_response_data : ", Parsed_User_response_data);
 
         let indexcontainer = document.getElementById('indexcontainer');
+        // let indexcontainer1 = document.getElementById('indexcontainer1');
 
         let rows = '';
+        // let rows1 = '';
+
+        // let arr = ["NEW RELEASES", "ROMANCE", "SPORTS","FANTASY","SUMMER READING"] 
 
         for (i = 0; i < Parsed_User_response_data.length; i++) {
             let id = Parsed_User_response_data[i]._id;
             rows = rows + `
-            <div class="container  d-flex-row lh-lg pb-3 pt-3 shadow p-3 mb-5 bg-body rounded" onclick="handleClickUser('${id}')">
-                  <div class ="pe-3" ><img  src ="${Parsed_User_response_data[i].image} "class = "indexcontainerimg"></div>
-                   <div class ="pe-3 fs-2 fw-bold ">${Parsed_User_response_data[i].name}</div>
-                    <div class ="pe-3 fs-2 fw-bold ">${Parsed_User_response_data[i].offer}</div>
-                    <div class ="pe-3 fs-2 fw-bold ">${Parsed_User_response_data[i].author}</div>
+            <div class="container d-flex-row lh-lg pb-3 pt-3 shadow p-3 mb-5 bg-body rounded  position-relative" onclick="handleClickUser('${id}')">
+                  <div class ="text-center" ><img  src ="${Parsed_User_response_data[i].image} "class = "indexcontainerimg"></div>
+                   <div class ="text-center mt-3  indexcontainertext">${Parsed_User_response_data[i].name}</div>
+                    <div class ="text-center indexcontainertext">${Parsed_User_response_data[i].author}</div>
+                    <div class ="text-center indexcontainertext ">${Parsed_User_response_data[i].price}</div>
+                    <div class ="offer position-absolute top-0 start-1">${Parsed_User_response_data[i].offer}off</div>
                   </div>
             `
             indexcontainer.innerHTML = rows
         }
+        // let item = Parsed_User_response_data[i];
+        // if (!arr.includes(item.category)) {
+        //     rows1 += `
+        //             <div class="container lh-lg pb-3 pt-3 shadow-none mb-5 bg-light rounded" onclick="handleClick('${item._id}')">
+        //                 <div id="imageid"><img src="${item.image}" class="datacontainerimg"></div>
+        //                 <div class="d-flex justify-content-between">
+        //                     <div id="titleid" class="fs-4 fw-bold d-inline mt-1">${item.name}</div>
+        //                     <div id="titleid" class="fs-5 fw-bold d-inline mt-2">${item.price}</div>
+        //                 </div>
+        //             </div>
+        //         `;
+        // }
+        // indexcontainer1.innerHTML = rows1;
     } catch (error) {
         console.log("error : ", error)
     }
@@ -62,24 +80,60 @@ async function UserSingleData() {
         console.log("User_parsed_single_data : ", User_parsed_single_data)
 
         let rows = `
-        <div class="container  lh-lg  pb-3 pt-3 shadow p-3 mb-5 bg-body rounded mt-3 mt-5">
-          <div id = "imageid1" class="text-center" ><img  src ="${User_parsed_single_data.image} "class = "User_single_datacontainer"></div>
-                     <div  class = "mt-3 fw-bold fs-1">Name : ${User_parsed_single_data.name}</div>
-                      <div  class="fst-normal fs-3">Publisher : ${User_parsed_single_data.publisher}</div>
-                     <div class="fst-normal fs-3">Price : ${User_parsed_single_data.price}</div>
-                     <div  class="fst-normal fs-3">Category : ${User_parsed_single_data.category}</div>
-                     <div  class="fst-normal fs-3">Author : ${User_parsed_single_data.author}</div>
-                     <div  class="fst-normal fs-3">Description : ${User_parsed_single_data.description}</div>
-                     <div  class="fst-normal fs-3">Offer : ${User_parsed_single_data.offer}</div>
-                     </div>
-           </div>
+        <div class="container lh-lg  pb-3 pt-3 shadow p-3 mb-5 bg-body rounded mt-3 mt-5">
+        <div class="row ">
+            <div class="col"><div id = "imageid1" class="text-center" ><img  src ="${User_parsed_single_data.image} "class = "User_single_datacontainer"></div></div>
+            <div class="col text-center"><div  class = "mt-3 fw-bold fs-2">${User_parsed_single_data.name}</div>
+            <div  class="fw-bold fs-4 ">Publisher : ${User_parsed_single_data.publisher}</div>
+           <div class="fw-bold fs-4 ">Price : ${User_parsed_single_data.price}</div>
+           <div  class="fw-bold fs-4 ">Category : ${User_parsed_single_data.category}</div>
+           <div  class="fw-bold fs-4 ">Author : ${User_parsed_single_data.author}</div>
+           <div  class="fw-bold fs-4">Offer : ${User_parsed_single_data.offer}</div></div>
+        </div>
+        <div class="row mt-5">
+            <div  class="descriptiontext"> ${User_parsed_single_data.description}</div>
+        </div>
+    </div>
         `
         document.getElementById('User_single_datacontainer').innerHTML = rows;
+
+        let User_single_response1 = await fetch(`/submit`);
+        console.log("User_single_response1 : ", User_single_response1);
+
+        let User_parsed_single_response1 = await User_single_response1.json();
+        console.log("User_parsed_single_response1 : ", User_parsed_single_response1);
+
+        let data1 = User_parsed_single_response1.data;
+        console.log("data1 : ", data1);
+        //  console.log("message1.category : ",message1.category)
+
+        let rows1 = ''
+        let User_single_datacontainer1 = document.getElementById('User_single_datacontainer1');
+        for (i = 0; i < data1.length; i++) {
+            if (data1[i].category === User_parsed_single_data.category) {
+                rows1 = rows1 + ` 
+                 
+           <div class="container d-flex-row lh-lg pb-3 pt-3 shadow p-3 mb-5 bg-body rounded  position-relative" onclick="handleClickUser('${id}')">
+                  <div class ="text-center" ><img  src ="${data1[i].image} "class = "single_datacontainer1img"></div>
+                   <div class ="text-center mt-3  indexcontainertext">${data1[i].name}</div>
+                    <div class ="text-center indexcontainertext">${data1[i].author}</div>
+                    <div class ="text-center indexcontainertext ">${data1[i].price}</div>
+                    <div class ="offer position-absolute top-0 start-1">${data1[i].offer}</div>
+                  </div>
+            
+             `
+            }
+
+            User_single_datacontainer1.innerHTML = rows1;
+        }
+
+
 
     } catch (error) {
         console.log("error : ", error);
     }
 }
+
 
 async function AddBook(event) {
 
@@ -130,7 +184,7 @@ async function AddBook(event) {
         console.log("parsed_response : ", parsed_response)
 
         if (parsed_response) {
-            alert("User Created Successfully");
+            alert("Book Added Successfully");
             return;
         } else {
             alert("something went wrong");
@@ -166,8 +220,8 @@ async function GetData() {
                 <div class="col fs-5 fw-bold text-center">${parsed_display[i].name}</div>
                 <div class="col fs-5 fw-bold text-center">${parsed_display[i].author}</div>
                 <div class="col fs-5 fw-bold text-center">${parsed_display[i].publisher}</div>
+                <div class="col text-center"><button class = "ps-2 pe-2 fs-5 editbtn" onclick="handleClickEdit('${id}')">Edit</button></div>
                 <div class="col text-center"><img src="./images/icons8-delete-30.png" alt="deleteimg" id= "deleteimg" onclick="handleClickDelete('${id}')"></div>
-                <div class="mt-3 "><button class = "ps-2 pe-2 fs-5 twobtn" onclick="handleClickEdit('${id}')">Edit</button></div>
             </div>
                     
                   </div>
@@ -298,61 +352,54 @@ async function handleClickDelete(id) {
         let parsed_Delete_response = await Delete_response.json();
         console.log("parsed_response : ", parsed_Delete_response);
 
-        window.location.href = `admin.html?id=${id}`
+        window.location.href = `index.html?id=${id}`
+
+        if(parsed_Delete_response){
+            alert("Book Deleted Successfully")
+        }else{
+            alert("Book Not Deleted")
+        }
     } catch (error) {
         console.log("error : ", error);
     }
 }
 
+function Newrelease(){
+    window.location.href = `CategoryPage.html`
+}
 
 
+async function getnewrelease(){
+    try {
+        let User_response = await fetch('/submit');
+        console.log("User_response : ", User_response);
 
+        let Parsed_User_response = await User_response.json();
+        console.log("Parsed_User_response : ", Parsed_User_response);
 
-// function handleClick(id) {
-//     window.location.href = `singleview.html?id=${id}`
-// }
+        let Parsed_User_response_data = Parsed_User_response.data;
+        console.log("Parsed_User_response_data : ", Parsed_User_response_data);
 
-// async function GetSingleData() {
-//     let location = window.location;
-//     console.log("location", location);
+        let categorycontainer = document.getElementById('categorycontainer');
+        // let indexcontainer1 = document.getElementById('indexcontainer1');
 
-//     let querystring = location.search;
-//     console.log("querystring", querystring);
+        let rows = '';
 
-
-//     let urlParams = new URLSearchParams(querystring);
-//     console.log("url", urlParams);
-
-//     let id = urlParams.get("id");
-//     console.log("id ", id, typeof (id));
-
-//     try {
-//         let single_response = await fetch(`/submit/${id}`);
-//         console.log("single_response : ", single_response)
-
-//         let parsed_single_response = await single_response.json();
-//         console.log("parsed_single_response : ", parsed_single_response);
-
-//         let parsed_single_data = parsed_single_response.data;
-//         console.log("parsed_single_data : ", parsed_single_data)
-
-//         let rows = `
-//         <div class="container  lh-lg  pb-3 pt-3 shadow p-3 mb-5 bg-body rounded mt-3 mt-5">
-//           <div id = "imageid1" class="text-center" ><img  src ="${parsed_single_data.image} "class = "single_datacontainerimg"></div>
-//                       <div  class = "mt-3 fw-bold fs-1">Name : ${parsed_single_data.name}</div>
-//                       <div  class="fst-normal fs-3">Publisher : ${parsed_single_data.publisher}</div>
-//                      <div class="fst-normal fs-3">Price : ${parsed_single_data.price}</div>
-//                      <div  class="fst-normal fs-3">Category : ${parsed_single_data.category}</div>
-//                      <div  class="fst-normal fs-3">Author : ${parsed_single_data.author}</div>
-//                      <div  class="fst-normal fs-3">Description : ${parsed_single_data.description}</div>
-//                      <div  class="fst-normal fs-3">Offer : ${parsed_single_data.offer}</div>
-                     
-//                      </div>
-//            </div>
-//         `
-//         document.getElementById('single_datacontainer').innerHTML = rows;
-
-//     } catch (error) {
-//         console.log("error : ", error);
-//     }
-// }
+        for (i =Parsed_User_response_data.length-1 ; i > Parsed_User_response_data.length-8; i--) {
+            let id = Parsed_User_response_data[i]._id;
+            rows = rows + `
+            <div class="container d-flex-row lh-lg pb-3 pt-3 shadow p-3 mb-5 bg-body rounded  position-relative" onclick="handleClickUser('${id}')">
+                  <div class ="text-center" ><img  src ="${Parsed_User_response_data[i].image} "class = "indexcontainerimg"></div>
+                   <div class ="text-center mt-3  indexcontainertext">${Parsed_User_response_data[i].name}</div>
+                    <div class ="text-center indexcontainertext">${Parsed_User_response_data[i].author}</div>
+                    <div class ="text-center indexcontainertext ">${Parsed_User_response_data[i].price}</div>
+                    <div class ="offer position-absolute top-0 start-1">${Parsed_User_response_data[i].offer}off</div>
+                  </div>
+            `
+            categorycontainer.innerHTML = rows
+        }
+        
+    } catch (error) {
+        console.log("error : ", error)
+    }
+}

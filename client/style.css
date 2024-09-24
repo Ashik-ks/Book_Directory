@@ -2,24 +2,177 @@
     padding: 0;
     margin: 0;
 }
+.navfirstdiv{
+    background-color: whitesmoke;
+    color: rgb(239, 38, 38);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px;
+}
+.navtext{
+    font-size: 12px;
+    font-weight: 400;
+    color:black;
+    margin-top: 5px;
+}
+.logoimg{
+    width: 125px;
+}
+#search{
+min-width: 100%;
+}
+.nav-link{
+    font-size: 18px;
+    font-weight: 400;
+}
+.banner1{
+    width: 100%;
+}
+.categoryborder{
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    border: 5px solid transparent; /* Initial border */
+    border-radius: 8px; /* Rounded corners */
+    position: relative; /* Position for the pseudo-element */
+    overflow: hidden; /* Hide overflow */
+    transition: color 0.4s; /* Smooth text color change */
+}
+.categoryborder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.4s ease-in-out; /* Smooth border transition */
+    transform: scale(1); /* Start scale */
+}
+
+.categoryborder:hover::before {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.categoryborder:hover {
+    color: red; /* Change text color to red on hover */
+}
+
+.Categoryimg{
+    width: 115px;
+    margin: auto;
+}
+.Categoryimg1{
+    width: 90px;
+    margin: auto;
+}
+.categorytext{
+    font-size: 14px;
+    font-weight: 600;
+}
+#indexcontainer,#User_single_datacontainer1,#categorycontainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+    row-gap: 30px;
+}
+/* #indexcontainer,#User_single_datacontainer1,#categorycontainer :hover{
+    box-shadow: 10px 10px  20px grey;
+    -ms-transform: scale(4);
+    -webkit-transform: scale(4);
+    transform: scale(1.1); 
+    padding: 5px;
+} */
+.indexcontainerimg,.single_datacontainer1img{
+    width: 200px;
+    height: 300px;
+}
+.User_single_datacontainer{
+    width: 70%;
+    height: 400px;
+    
+}
+.indexcontainertext{
+font-size: 15px;
+font-weight: 600;
+}
+.descriptiontext{
+    font-size: 17px;
+    font-weight: 400;
+}
+.offer{
+    background: white;
+    font-weight: 500;
+    color: red;
+    font-style: italic;
+    border-radius: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    flex: 1 1 calc(30% - 20px); /* Adjusts for spacing */
+    transition: transform 0.2s;
+}
+.offer:hover {
+    transform: translateY(7px);
+}
+.authordiv{
+    background-image: url('./images/athpbl_bg.jpg');
+    background-size: contain;
+}
+.authorimg{
+    width: 175px;
+    border-radius: 100%;
+}
+.authorbtn{
+    width: 120px;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+}
+.authorbtn:hover {
+    background-color: red;
+}
+.footertext{
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 33%;
+}
+.footertext1{
+    font-size: 13px;
+    font-weight: 400;
+}
+.nulldiv {
+    border-bottom: 2px dashed rgb(173, 162, 162);
+}
+.nulldiv1{
+    border-bottom: 2px solid rgb(173, 162, 162);
+}
+.footertext3{
+    font-size: 13px;
+    font-weight: 500;
+}
+.footerlogoimg{
+    width: 350px;
+    margin-left: 37%;
+}
+.categorytext{
+    font-size: 17px;
+    font-weight: 400;
+}
+
 .adminbody{
     background-color: rgb(255, 255, 255);
 }
 .datacontainerimg{
     width: 60px;
-    border-radius: 100%;
+    border-radius: 5px;
 }
 #deleteimg{
     width: 30px;
 }
-.AddBookbody{
-    background-image: url('./images/istockphoto-470721440-2048x2048.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+.AddBookbody,.updatebody,.adminbody{
+    /* background-image: url('./images/athpbl_bg.jpg'); */
+    background-color: rgb(253, 65, 65);
 }
-#formdiv {
+#formdiv,#updatediv {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -59,7 +212,7 @@ textarea:focus {
     outline: none;
 }
 
-button {
+#formbtn {
     background-color: #616764;
     color: #ffffff;
     border: none;
@@ -70,11 +223,42 @@ button {
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
-button:hover {
+#formbtn:hover {
     background-color: #004d40;
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.editbtn {
+    font: bold 3rem Roboto, sans-serif;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0.08em 0 rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    padding: 0.1em;
+    border-radius: 0.3em;
+    border: 2px solid;
+    border-color: color(var(--btnColor) shade(20%)) color(var(--btnColor) shade(30%)) color(var(--btnColor) shade(40%));
+    background-color: var(--btnColor);
+    background-image: linear-gradient(var(--btnColor), color(var(--btnColor) shade(10%)));
+    box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.1), 0 0.1em 0.2em rgba(0, 0, 0, 0.3), 0 -0.1em 0.07em rgba(0, 0, 0, 0.3) inset, 0 0.1em 0.07em rgba(255, 255, 255, 0.2) inset;
+    transition: all 100ms;
+  }
+  
+.editbtn:hover,
+.editbtn:focus {
+      box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.4), 0 0.1em 0.2em rgba(0, 0, 0, 0.4), 0 -0.1em 0.07em rgba(0, 0, 0, 0.3) inset, 0 0.1em 0.07em rgba(255, 255, 255, 0.2) inset;
+  }
+    
+ .editbtn:active {
+      padding: 0.2em;
+      margin-top: 0.1em;
+      border-color: color(var(--btnColor) shade(30%)) color(var(--btnColor) shade(20%)) var(--btnColor);
+      background-image: linear-gradient(color(var(--btnColor) shade(5%)), var(--btnColor));
+      box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.1em rgba(0, 0, 0, 0.2) inset, 0.05em 0 0.07em rgba(0, 0, 0, 0.2) inset, -0.05em 0 0.07em rgba(0, 0, 0, 0.2) inset;
+      transition-duration: 10ms;
+    }
 
 @media (max-width: 600px) {
     .container {
@@ -85,3 +269,27 @@ button:hover {
         font-size: 14px;
     }
 }
+@media only screen and (max-width: 900px) {
+#indexcontainer,#User_single_datacontainer1,#categorycontainer{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media only screen and (max-width: 700px) {
+    .authorimg{
+            width: 100px;
+            border-radius: 100%;
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        .authorimg{
+                width: 75px;
+                border-radius: 100%;
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+        @media only screen and (max-width: 900px) {
+            .footerlogoimg{
+                    width: 60%;
+                }
+            }

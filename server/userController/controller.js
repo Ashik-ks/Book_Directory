@@ -47,7 +47,7 @@ exports.GetBook = async function (req,res){
          let response = {
             success : true,
             statuscode : 200,
-            message : "Books Get Successfully",
+            message : "Books Gets Successfully",
             data : userData,
         }
         res.status(response.statuscode).send(response);
@@ -56,7 +56,7 @@ exports.GetBook = async function (req,res){
         let response = {
             success : false,
             statuscode : 400,
-            message : "Book not added",
+            message : "Book not getting",
         }
         res.status(response.statuscode).send(response);
     }
@@ -76,7 +76,7 @@ exports.GetSingleBoook = async function (req,res){
             let response = {
                 success : true,
                 statuscode : 200,
-                message : "single data successfull",
+                message : "single book gets successfull",
                 data :user_data,
             }
             res.status(response.statuscode).send(response);
@@ -84,7 +84,7 @@ exports.GetSingleBoook = async function (req,res){
         let response = {
             success : false,
             statuscode : 400,
-            message : "Book not added",
+            message : "Single Book not Getting",
         }
         res.status(response.statuscode).send(response);
     }
@@ -146,3 +146,4 @@ exports.DeleteBook = async function (req,res){
         res.status(response.statuscode).send(response);
     }
 }
+
