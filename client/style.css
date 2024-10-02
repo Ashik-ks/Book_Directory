@@ -21,6 +21,9 @@
 #search{
 min-width: 100%;
 }
+.OFFCANVAS{
+    display: none;
+}
 .nav-link{
     font-size: 18px;
     font-weight: 400;
@@ -269,6 +272,23 @@ textarea:focus {
         font-size: 14px;
     }
 }
+@media only screen and (max-width: 700px) {
+    .OFFCANVAS{
+            display: block;
+            margin-left: 190%;
+        }
+    }
+    @media only screen and (max-width: 700px) {
+        .navone{
+                display: none;
+            }
+        }
+        @media only screen and (max-width: 700px) {
+            .search{
+                    margin-left: 25%;
+                    max-width: 50%;
+                }
+            } 
 @media only screen and (max-width: 900px) {
 #indexcontainer,#User_single_datacontainer1,#categorycontainer{
         grid-template-columns: repeat(1, 1fr);

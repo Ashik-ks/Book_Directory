@@ -13,7 +13,7 @@
 
 <div class="container pt-3 pb-3 mb-2">
     <div class="row">
-        <div class="col-7 ">
+        <div class="col-7 navone">
             <div class="row">
                 <div class="col-3 border-1 border-end border-danger">
                     <div class="row justify-content-center align-items-center ">
@@ -26,11 +26,41 @@
                 <div class="col-2 navtext text-center">CONTACT US</div>
             </div>
         </div>
-        <div class="col-4"></div>
+        <div class="col-4 navone"></div>
         <div class="col d-flex justify-content-center align-items-center text-center ">
             <div class="row ">
-                <div class="col"><img src="./images/navlogin.png" alt=""></div>
-                <div class="col"><span>login</span></div>
+                <div class="col navone"><img src="./images/navlogin.png" alt=""></div>
+                <div class="col navone"><span>login</span></div>
+
+                <div class="col  OFFCANVAS"><button class="btn btn-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="./images/icons8-more-24.png" alt="img"></button>
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                      <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel"></h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                    <div class="offcanvas-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row"><div class="col-3 text-center">
+                                    <img src="./images/navlocation.png" alt="" width="30" height="24" >
+                                </div><div class="col fs-6 fw-bold text-start">
+                                    STORE LOCATION
+                                </div></div>
+                               
+                                <div class="row navtext  border-1 border-end border-danger text-center">ABOUT US</div>
+                                <div class="row navtext border-1 border-end border-danger text-center">BLOG</div>
+                                <div class="row navtext text-center">CONTACT US</div>
+                                <div class="row"><div class="col-3 text-center">
+                                    <img src="./images/navlogin.png" alt="" width="30" height="24">
+                                </div><div class="col fs-6 fw-bold text-start">
+                                    LOGIN
+                                </div></div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div></div>
             </div>
     </div>
 </div>
@@ -39,9 +69,9 @@
 <div class="container">
     <div class="row">
         <div class="col-4"><img src="./images/oxfordsquarelogo.jpg" alt="image" class="logoimg"></div>
-        <div class="col-5 d-flex align-items-center"><input type="search" name="search" id="search" class=" border border-danger pt-2 pb-2" placeholder="Search By Author, Publisher, Book Type, Category, SKU"></div>
-        <div class="col-1 d-flex align-items-center"><img src="./images/cart.png" alt="" class="pe-2">CART</div>
-        <div class="col-2  d-flex align-items-center mt-2"><input type="text" class="border border-danger pt-2 pb-2" placeholder="SEE ALL OFFERS"></div>
+        <div class="col-5 d-flex align-items-center"><input type="search" name="search" id="search" class=" border border-danger pt-2 pb-2 search" placeholder="Search By Author, Publisher, Book Type, Category, SKU"></div>
+        <div class="col-1 d-flex align-items-center "><img src="./images/cart.png" alt="" class="pe-2 navone"><span class="navone">CART</span></div>
+        <div class="col-2  d-flex align-items-center mt-2"><input type="text" class="border border-danger pt-2 pb-2 navone" placeholder="SEE ALL OFFERS"></div>
     </div>
 </div>
 
